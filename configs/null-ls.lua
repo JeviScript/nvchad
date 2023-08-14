@@ -23,7 +23,7 @@ local opts = {
     null_ls.builtins.formatting.csharpier,
     null_ls.builtins.formatting.prettier.with {
       extra_filetypes = { "toml", "svelte" },
-    },
+    }
   },
 }
 

@@ -2,7 +2,29 @@ local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
-local servers = { "html", "cssls", "rust_analyzer", "lua_ls", "jsonls", "svelte", "tsserver", "custom_elements_ls" }
+local servers = {
+  "html",
+  "cssls",
+  "rust_analyzer",
+  "lua_ls",
+  "jsonls",
+  "svelte",
+  "tsserver",
+  "custom_elements_ls",
+  "terraformls",
+}
+
+-- local project_library_path = "/home/eldakar/.nvm/versions/node/v14.21.3/lib/node_modules"
+-- local cmd = {"ngserver", "--stdio", "--tsProbeLocations", project_library_path , "--ngProbeLocations", project_library_path}
+--
+-- require'lspconfig'.angularls.setup{
+--   cmd = cmd,
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   on_new_config = function(new_config,new_root_dir)
+--     new_config.cmd = cmd
+--   end,
+-- }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -31,3 +53,5 @@ lspconfig.omnisharp.setup {
     }),
   },
 }
+
+lspconfig.prismals.setup {}

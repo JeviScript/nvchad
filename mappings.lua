@@ -62,8 +62,21 @@ M.telescope = {
 M.general = {
   n = {
     ["<C-d>"] = { "<C-d>zz" },
-    ["<C-u>"] = { "<C-u>zz" }
-  }
+    ["<C-u>"] = { "<C-u>zz" },
+    ["<tab>"] = { "<C-6>" },
+    ["<leader>b"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
+  },
+}
+
+M.nvterm = {
+  n = {
+    -- toggle in terminal mode
+    ["<A-i>"] = { '<CMD>lua require("FTerm").toggle()<CR>' },
+  },
+
+  t = {
+    ["<A-i>"] = { '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>' },
+  },
 }
 
 return M

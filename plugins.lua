@@ -36,9 +36,15 @@ local plugins = {
   },
   {
     "nvim-telescope/telescope.nvim",
+    tag = "0.1.2",
+    dependencies = { "nvim-lua/plenary.nvim" },
     opts = function()
       return require "custom.configs.telescope"
     end,
+  },
+  {
+    "nvim-telescope/telescope-fzf-native.nvim",
+    build = "make",
   },
   {
     "Hoffs/omnisharp-extended-lsp.nvim",
@@ -48,7 +54,7 @@ local plugins = {
     opts = function()
       local config = require "plugins.configs.cmp"
       config.completion = {
-        autocomplete = false
+        autocomplete = false,
       }
       config.sources = {
         { name = "nvim_lsp", priority = 1 },
@@ -62,7 +68,7 @@ local plugins = {
           cmp.config.compare.exact,
           cmp.config.compare.kind,
           cmp.config.compare.order,
-        }
+        },
       }
       return config
     end,
@@ -75,7 +81,7 @@ local plugins = {
           shell = "nu",
           type_opts = {
             float = {
-              relative = 'editor',
+              relative = "editor",
               row = 0.3,
               col = 0.25,
               width = 1.0,
@@ -83,7 +89,7 @@ local plugins = {
               border = "single",
             },
           },
-        }
+        },
       }
     end,
   },
@@ -103,7 +109,18 @@ local plugins = {
   },
   {
     "nvim-tree/nvim-tree.lua",
-  }
+    opts = function()
+      return require "custom.configs.nvimtree"
+    end,
+  },
+  {
+    "numToStr/FTerm.nvim",
+    config = function()
+      require("FTerm").setup({
+        border = 'single'
+      })
+    end
+  },
 }
 
 return plugins
